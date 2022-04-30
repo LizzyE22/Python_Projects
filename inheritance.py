@@ -10,7 +10,7 @@ class Employee(User):
     position = 'manager'
     weekly_hours = 40
 
-#child class Guest with unique attributes
+#child class Client with unique attributes
 class Client(User):
     phone_number = ''
     wine_club = True
