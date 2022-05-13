@@ -4,6 +4,10 @@ from tkinter import *
 from tkinter import filedialog as fd
 from tkinter import messagebox
 
+def SourceBrowse(self):
+    file_path = fd.askdirectory()
+    self.txtblank1.insert(END, file_path)
+
 class ParentWindow(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -16,11 +20,13 @@ class ParentWindow(Frame):
         self.master.config(bg='lightgrey')
 
         #browse buttons
-        self.btnBrowse = Button(self.master, text='Browse...', width=15, font=("Helvetica", 10))
-        self.btnBrowse.grid(row=3, column=0, columnspan=2, padx=(15,0), pady=(85,0))
+        self.btnBrowse1 = tk.Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
+                                    SourceBrowse(self))
+        self.btnBrowse1.grid(row=3, column=0, columnspan=2, padx=(15,0), pady=(85,0))
 
-        self.btnBrowse = Button(self.master, text='Browse...', width=15, font=("Helvetica", 10))
-        self.btnBrowse.grid(row=4, column=0, columnspan=2, padx=(15,0), pady=(15,0))
+        self.btnBrowse2 = Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
+                                 SourceBrowse(self))
+        self.btnBrowse2.grid(row=4, column=0, columnspan=2, padx=(15,0), pady=(15,0))
 
         self.btnCheck = Button(self.master, text='Check for files...', width=15, height=2, font=("Helvetica", 10))
         self.btnCheck.grid(row=5, column=0, columnspan=2, padx=(15,0), pady=(25,0))
@@ -36,15 +42,9 @@ class ParentWindow(Frame):
         self.btnClose = Button(self.master, text='Close Program', width=15, height=2, font=("Helvetica", 10))
         self.btnClose.grid(row=5, column=2, sticky=SE)
 
-        tk.filedialog.askdirectory()
-        def callback():
-            name= fd.askdirectory()
-            print(name)
-
-        errmsg = 'Error!'
-        self.btnCheck(self.master, text='Check for files...', command=callback).grid
 
 
+       
 if __name__ == "__main__":
  root = tk.Tk()
  App = ParentWindow(root)
