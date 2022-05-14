@@ -8,6 +8,11 @@ def SourceBrowse(self):
     file_path = fd.askdirectory()
     self.txtblank1.insert(END, file_path)
 
+def DestBrowse(self):
+    file_path = fd.askdirectory()
+    self.txtblank2.insert(END, file_path)
+    
+    
 class ParentWindow(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -20,23 +25,23 @@ class ParentWindow(Frame):
         self.master.config(bg='lightgrey')
 
         #browse buttons
-        self.btnBrowse1 = tk.Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
-                                    SourceBrowse(self))
-        self.btnBrowse1.grid(row=3, column=0, columnspan=2, padx=(15,0), pady=(85,0))
+        self.SourceBrowse = tk.Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
+                                        SourceBrowse(self))
+        self.SourceBrowse.grid(row=3, column=0, columnspan=2, padx=(15,0), pady=(85,0))
 
-        self.btnBrowse2 = Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
-                                 SourceBrowse(self))
-        self.btnBrowse2.grid(row=4, column=0, columnspan=2, padx=(15,0), pady=(15,0))
+        self.DestBrowse = tk.Button(self.master, text='Browse...', width=15, font=("Helvetica", 10), command=lambda:
+                                     DestBrowse(self))
+        self.DestBrowse.grid(row=4, column=0, columnspan=2, padx=(15,0), pady=(15,0))
 
         self.btnCheck = Button(self.master, text='Check for files...', width=15, height=2, font=("Helvetica", 10))
         self.btnCheck.grid(row=5, column=0, columnspan=2, padx=(15,0), pady=(25,0))
 
         #text field buttons
-        self.txtblank = Entry(self.master, width=60)
-        self.txtblank.grid(row=3, column=2, padx=(15,0), pady=(80,0))
+        self.txtblank1 = Entry(self.master, width=60)
+        self.txtblank1.grid(row=3, column=2, padx=(15,0), pady=(80,0))
 
-        self.txtblank = Entry(self.master, width=60)
-        self.txtblank.grid(row=4, column=2, padx=(15,0), pady=(15,0))
+        self.txtblank2 = Entry(self.master, width=60)
+        self.txtblank2.grid(row=4, column=2, padx=(15,0), pady=(15,0))
 
         #close program button
         self.btnClose = Button(self.master, text='Close Program', width=15, height=2, font=("Helvetica", 10))
