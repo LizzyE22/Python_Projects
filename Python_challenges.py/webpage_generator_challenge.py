@@ -7,8 +7,17 @@ import webbrowser
 
 
 def UserTab(self):
-    NewTab = "file:///C:/Users/Esque/OneDrive/Documents/GitHub/Python_Projects/Python_challenges.py/webpage_newtab_challenge.html"
+    NewTab = "webpage_newtab_challenge.html"
     webbrowser.open_new_tab(NewTab)
+    f = open("NewTab", "w")
+    f.write("\n")
+    self.textEntry.insert(END, f)
+
+
+    #open and read the file after appending
+    f = open("NewTab", "r")
+    print(f.read())
+    
 
 class ParentWindow(Frame):
     def __init__(self, master):
@@ -25,6 +34,12 @@ class ParentWindow(Frame):
                                
         self.button1.grid( row = 2, column = 2, columnspan = 2, padx = 15, pady = 15, sticky = W+E+N+S)
 
+        #text field buttons
+        self.textEntry = Entry(self.master, text = "ENTER TEXT", width = 25)
+        self.textEntry.grid(row = 1, column = 2, columnspan = 2, padx = (15,0), pady = (15,0), sticky = W+E+N+S)
+        
+
+    
    
 
 
