@@ -7,18 +7,31 @@ import webbrowser
 
 
 def UserTab(self):
-    NewTab = "webpage_newtab_challenge.html"
-    webbrowser.open_new_tab(NewTab)
-    f = open("NewTab", "w")
-    f.write("\n")
-    self.textEntry.insert(END, f)
+    top = """
+    <!DOCTYPE html>
+    <html>
+        <head>
+        <meta charset="utf-8">
+        </head>
+        <body>
+            <h1>
+    """
 
+    middle = self.textEntry.get()
 
-    #open and read the file after appending
-    f = open("NewTab", "r")
-    print(f.read())
+    bottom = """
+            </h1>
+        </body>
+    </html>
+    """
+
+    f = open("webpage_newtab_challenge.html", "w")
+    f.write(top + middle + bottom)
+    f.close()
+    url = "webpage_newtab_challenge.html"
+    webbrowser.open_new_tab(url)
+
     
-
 class ParentWindow(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -35,7 +48,7 @@ class ParentWindow(Frame):
         self.button1.grid( row = 2, column = 2, columnspan = 2, padx = 15, pady = 15, sticky = W+E+N+S)
 
         #text field buttons
-        self.textEntry = Entry(self.master, text = "ENTER TEXT", width = 25)
+        self.textEntry = Entry(self.master, width = 25)
         self.textEntry.grid(row = 1, column = 2, columnspan = 2, padx = (15,0), pady = (15,0), sticky = W+E+N+S)
         
 
