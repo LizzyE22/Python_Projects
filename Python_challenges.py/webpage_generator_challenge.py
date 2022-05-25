@@ -7,31 +7,18 @@ import webbrowser
 
 
 def UserTab(self):
-    top = """
-    <!DOCTYPE html>
-    <html>
-        <head>
-        <meta charset="utf-8">
-        </head>
-        <body>
-            <h1>
-    """
+    NewTab = "webpage_newtab_challenge.html"
+    webbrowser.open_new_tab(NewTab)
+    f = open("NewTab", "w")
+    f.write("\n")
 
-    middle = self.textEntry.get()
+def UserText(self):
+    self.textEntry.get()
+    text = tk.StringVar(self.master, )
 
-    bottom = """
-            </h1>
-        </body>
-    </html>
-    """
-
-    f = open("webpage_newtab_challenge.html", "w")
-    f.write(top + middle + bottom)
-    f.close()
-    url = "webpage_newtab_challenge.html"
-    webbrowser.open_new_tab(url)
-
+  
     
+
 class ParentWindow(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
