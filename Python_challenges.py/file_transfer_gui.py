@@ -32,7 +32,7 @@ def btnCheck(self):
     #gets the absolute path of the file, which includes the source folder path and the file name
         absolutePath = source + file
     #moves the file located at the absolute path to the destination folder
-        shutil.copy(absolutePath, destination)
+        shutil.copy(absolutePath, dest)
 
     
 #frame configuration
