@@ -30,10 +30,22 @@ def btnCheck(self):
     #check each file to see if its newer than 24 hours ago
     #if it is, we are going to copy it to the destination
     for file in files:
-    #gets the absolute path of the file, which includes the source folder path and the file name
-        absolutePath = source + file
-    #moves the file located at the absolute path to the destination folder
-        shutil.copy(absolutePath, dest)
+        #gets the absolute path of the file, which includes the source folder path and the file name
+        absolutePath = source + '/' + file
+        
+        #gets the modification time of the file in mtime format
+        mtime = os.path.getmtime(absolutePath)
+        #converts the mtime to a proper datetime format
+        modTime = datetime.datetime.fromtimestamp(mtime)
+
+        #gets the current date and time
+        current = datetime.datetime.now()
+        #gets the time 24 hrs ago
+        twentyFour = current - datetime.timedelta(hours=24)
+
+        #if the file was modified within the last 24 hrs, move the file
+        if (modTime > twentyFour):
+            shutil.copy(absolutePath, dest)
 
     
 #frame configuration
